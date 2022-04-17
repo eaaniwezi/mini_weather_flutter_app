@@ -6,10 +6,9 @@ part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://fcc-weather-api.glitch.me/api/")
 abstract class ApiClient {
-
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
   @GET("/current")
-  Future<WeatherModel> fetchWeatherData(@Query("lat") double lat, @Query("lon") double lon);
-
+  Future<WeatherModel> fetchWeatherData(
+      @Query("lat") double lat, @Query("lon") double lon);
 }
