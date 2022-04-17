@@ -3,18 +3,30 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mini_weather_app/blocs/weather/weather_bloc.dart';
+import 'package:mini_weather_app/repositories/weather_repository.dart';
 import 'package:mini_weather_app/screens/home_screen.dart';
 import 'package:mini_weather_app/screens/initial_screen.dart';
 import 'package:mini_weather_app/repositories/show_toast.dart';
 import 'package:mini_weather_app/screens/no_internet_screen.dart';
 import 'package:mini_weather_app/blocs/network/network_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final weatherRepository = WeatherRepository();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<NetworkBloc>(
         create: (context) {
           return NetworkBloc()..add(ListenConnection());
+        },
+      ),
+      BlocProvider<WeatherBloc>(
+        create: (context) {
+          return WeatherBloc(
+            initialState: WeatherInitial(),
+            weatherRepository: weatherRepository,
+          );
         },
       ),
     ],

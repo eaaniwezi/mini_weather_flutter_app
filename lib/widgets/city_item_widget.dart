@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mini_weather_app/blocs/weather/weather_bloc.dart';
 import 'package:mini_weather_app/models/city_model.dart';
 
 class CityItemWidget extends StatelessWidget {
@@ -15,23 +17,20 @@ class CityItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(""),
-              Text(
-                cityModel.name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "Загрузка...",
-                style: TextStyle(color: Colors.green, fontSize: 10),
-              )
-            ],
-          )),
+        padding: const EdgeInsets.all(20),
+        child: InkWell(
+          onTap: () {
+            BlocProvider.of<WeatherBloc>(context).add(FindWeatherEvent(
+                latitude: cityModel.latitude, longitude: cityModel.longitude));
+          },
+          child: Text(
+            cityModel.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
