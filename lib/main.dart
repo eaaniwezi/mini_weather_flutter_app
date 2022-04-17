@@ -3,13 +3,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mini_weather_app/blocs/weather/weather_bloc.dart';
-import 'package:mini_weather_app/repositories/weather_repository.dart';
 import 'package:mini_weather_app/screens/home_screen.dart';
 import 'package:mini_weather_app/screens/initial_screen.dart';
 import 'package:mini_weather_app/repositories/show_toast.dart';
 import 'package:mini_weather_app/screens/no_internet_screen.dart';
 import 'package:mini_weather_app/blocs/network/network_bloc.dart';
+import 'package:mini_weather_app/blocs/weather/weather_bloc.dart';
+import 'package:mini_weather_app/repositories/weather_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
