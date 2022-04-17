@@ -7,7 +7,6 @@ abstract class NetworkState extends Equatable {
   List<Object> get props => [];
 }
 
-// class NetworkInitial extends NetworkState {}
 class ConnectionInitial extends NetworkState {}
 
 class ConnectionSuccess extends NetworkState {}

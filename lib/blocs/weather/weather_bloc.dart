@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, unnecessary_null_comparison
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -29,7 +29,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
             latitude: event.latitude, longitude: event.longitude);
         yield SuccessullyFetchedData(weatherModel: _weatherModel);
       } catch (e) {
-        print(e);
         yield ErrorFetchingData(error: "Couldn't fetch data");
       }
     }
