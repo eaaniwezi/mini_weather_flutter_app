@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mini_weather_app/models/city_model.dart';
+import 'package:mini_weather_app/widgets/city_item_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,17 +14,7 @@ class HomeScreen extends StatelessWidget {
         itemCount: cityList.length,
         itemBuilder: ((context, index) {
           var cityModel = cityList[index];
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                cityModel.name,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          );
+          return CityItemWidget(cityModel: cityModel);
         }),
       ),
     );
